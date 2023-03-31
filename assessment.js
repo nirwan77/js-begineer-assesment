@@ -106,28 +106,25 @@ console.log(moveZeroes([0])); // [0]
 
 /*
 7.
-function firstNonRepeatingLetter(str) {
-  let arra1 = str.toLowerCase().split('');
-  let result = '';
-  let count = 0;
- 
-  for (let x = 0; x < arra1.length; x++) {
-    count = 0;
- 
-    for (let y = 0; y < arra1.length; y++) 
-    {
-      if (arra1[x] === arra1[y]) {
-        count+= 1;
-      }
-    }
- 
-    if (count < 2) {
-      result = str[x];
-      break;
+const firstNonRepeatingLetter = str => {
+  const strToLower = str.toLowerCase();
+  for (let char of str) {
+    console.log(char);
+    if (
+      strToLower.indexOf(char.toLowerCase()) ===
+      strToLower.lastIndexOf(char.toLowerCase())
+    ) {
+      return char;
     }
   }
-  return result;
+  return '';
 };
+
+console.log(firstNonRepeatingLetter('a')); // 'a'
+console.log(firstNonRepeatingLetter('stress')); // 't'
+console.log(firstNonRepeatingLetter('sTreSS')); // 'T'
+console.log(firstNonRepeatingLetter('abba')); // ''
+console.log(firstNonRepeatingLetter("Go hang a salami, I'm a lasagna hog!")); // ','
 console.log(firstNonRepeatingLetter('a')); // 'a'
 console.log(firstNonRepeatingLetter('stress')); // 't'
 console.log(firstNonRepeatingLetter('sTreSS')); // 'T'
@@ -245,7 +242,7 @@ console.log(getMiddle('A')); // 'A'
 /*
 14.
 const disemvowel = str => {
-  return str.match(/[^aeiou]/ig).join('');
+  return str.replace(/[aeiou]/gi, '');
 };
 
 console.log(disemvowel('This website is for losers LOL!')); // 'Ths wbst s fr lsrs LL!'
